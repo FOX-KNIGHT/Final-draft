@@ -1,3 +1,67 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Elements
+    const header = document.querySelector('header');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('Menu');
+    const menuLinks = document.querySelectorAll('.Menu-list');
+    
+    // Variables for scroll detection
+    let lastScrollTop = 0;
+    let scrollThreshold = 10; // Minimum scroll amount before showing/hiding
+    
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        // Prevent scrolling when menu is open
+        document.body.classList.toggle('no-scroll');
+    }
+    
+    // Close mobile menu
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+    
+    // Handle scroll events
+    function handleScroll() {
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Only check if we've scrolled enough to avoid tiny movements
+        if (Math.abs(lastScrollTop - currentScrollTop) <= scrollThreshold) return;
+        
+        // Hide on scroll down, show on scroll up
+        if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
+            // Scrolling down & not at the top
+            header.classList.add('nav-hidden');
+        } else {
+            // Scrolling up or at the top
+            header.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = currentScrollTop;
+    }
+    
+    // Event Listeners
+    hamburger.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking a link
+    menuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+    
+    // Add scroll event with throttling for performance
+    let isScrolling;
+    window.addEventListener('scroll', () => {
+        // Clear previous timeout
+        window.clearTimeout(isScrolling);
+        
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout(handleScroll, 10);
+    });
+});
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
     // Add content wrapper div for better layout
