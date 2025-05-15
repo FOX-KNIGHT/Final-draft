@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at TechRediva | Revitalizing Digital Solutions</title>
+    <style>
+        :root {
+            --primary-color: #1A2133;
+            --secondary-color: #D6A151;
+            --accent-color: #C22E3A;
+            --dark-color: #363B47;
+            --light-color: #f7f1e8;
+            --medium-blue: #4D6A8B;
+            --amber: #E59C45;
+            --deep-red: #8B2635;
+            --silver: #799bc8;
+            --text-color: #333;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--amber);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(26, 33, 51, 0.85), rgba(139, 38, 53, 0.85)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--deep-red);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--medium-blue);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            box-shadow: var(--box-shadow);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .values {
+            background-color: var(--light-color);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .jobs {
+            background-color: white;
+        }
+
+        .jobs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .job-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-card:hover {
+            box-shadow: var(--box-shadow);
+            border-color: var(--accent-color);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .job-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-card .location {
+            color: var(--medium-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .job-card .location i {
+            margin-right: 0.5rem;
+        }
+
+        .job-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-card .btn {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .benefits {
+            background-color: var(--light-color);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .benefit-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .benefit-card i {
+            font-size: 2rem;
+            color: var(--amber);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials-slider {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            border-radius: 10px;
+            margin: 1rem;
+            background-color: var(--light-color);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--medium-blue);
+        }
+
+        .apply {
+            background-color: var(--primary-color);
+            background-image: linear-gradient(135deg, var(--primary-color), var(--deep-red));
+            color: white;
+            text-align: center;
+        }
+
+        .apply h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .apply p {
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--silver);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--amber);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--amber);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--primary-color);
+                text-align: center;
+                transition: left 0.3s ease;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Tech<span>Rediva</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#jobs">Open Positions</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#testimonials">Life at TechRediva</a></li>
+                    <li><a href="#apply" class="btn">Apply Now</a></li>
+                </ul>
+                <button class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Join Our Journey in Revitalizing Digital Solutions</h1>
+            <p>At TechRediva, we're not just building software; we're revitalizing the digital landscape with innovative
+                AI and ML solutions. Join our team of passionate tech enthusiasts crafting the future.</p>
+            <a href="#jobs" class="btn">Explore Opportunities</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About TechRediva</h2>
+                <p>Learn more about our mission and what makes us unique in the tech industry</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Revitalizing Digital Solutions</h3>
+                    <p>Founded in 2025, TechRediva emerged from a passion to create innovative solutions that address
+                        real-world challenges. Our name reflects our mission – revitalizing the digital landscape by
+                        bringing fresh perspectives to technology development.</p>
+                    <p>At TechRediva, we specialize in AI-driven software development, machine learning solutions, and
+                        cutting-edge web applications. Our team combines technical expertise with creative
+                        problem-solving to deliver exceptional digital experiences.</p>
+                    <p>We believe in building technology that not only solves problems but also enhances lives. Whether
+                        it's creating intuitive interfaces or developing complex algorithms, we approach each project
+                        with a commitment to excellence and a desire to push boundaries.</p>
+                </div>
+                <div class="about-image">
+                    <img src="Image/tech rediva.jpg" alt="TechRediva Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do at TechRediva</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>We challenge conventional thinking and embrace new technologies to create groundbreaking
+                        solutions.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Collaboration</h3>
+                    <p>We believe the best ideas emerge when diverse perspectives come together in a supportive
+                        environment.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Excellence</h3>
+                    <p>We set high standards for our work and continuously refine our skills to deliver exceptional
+                        results.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Impact</h3>
+                    <p>We measure our success by the positive difference our technology makes in people's lives and
+                        businesses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="jobs" class="jobs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Open Positions</h2>
+                <p>Join our team and help shape the future of digital solutions</p>
+            </div>
+            <div class="jobs-list">
+                <div class="job-card">
+                    <h3>Senior AI Engineer</h3>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Remote / San Francisco</div>
+                    <p>Lead our AI initiatives by developing innovative algorithms and models that drive our core
+                        products. You'll work with a diverse team to push the boundaries of what's possible in AI.</p>
+                    <a href="#apply" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <h3>Full Stack Developer</h3>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Boston / Remote</div>
+                    <p>Create responsive and dynamic web applications that provide exceptional user experiences. You'll
+                        work across our stack to build scalable solutions for our clients.</p>
+                    <a href="#apply" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <h3>UX/UI Designer</h3>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> New York / Remote</div>
+                    <p>Design intuitive interfaces that make complex technologies accessible. You'll collaborate with
+                        developers and product managers to create user-centered designs.</p>
+                    <a href="#apply" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <h3>Machine Learning Researcher</h3>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Remote</div>
+                    <p>Explore new approaches in machine learning to advance our capabilities. You'll conduct research
+                        that translates into practical applications for our products.</p>
+                    <a href="#apply" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <h3>DevOps Engineer</h3>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Chicago / Remote</div>
+                    <p>Build and maintain the infrastructure that powers our applications. You'll optimize our
+                        deployment processes and ensure reliability across our systems.</p>
+                    <a href="#apply" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <h3>Product Manager</h3>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Seattle / Remote</div>
+                    <p>Guide our product development from conception to launch. You'll work with stakeholders to define
+                        requirements and ensure our solutions meet market needs.</p>
+                    <a href="#apply" class="btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Join TechRediva?</h2>
+                <p>We offer more than just a job—we offer a career where you can thrive</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Cutting-Edge Projects</h3>
+                    <p>Work on innovative technologies and solve challenging problems that make a difference.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Remote-First Culture</h3>
+                    <p>Enjoy the flexibility of working from anywhere while staying connected with our collaborative
+                        tools.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Continuous Learning</h3>
+                    <p>Access to conferences, courses, and resources to help you grow professionally.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Comprehensive Healthcare</h3>
+                    <p>We prioritize your wellbeing with excellent medical, dental, and vision coverage.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-coins"></i>
+                    <h3>Competitive Compensation</h3>
+                    <p>Receive salary packages that recognize your skills and contributions.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Work-Life Balance</h3>
+                    <p>Flexible hours, unlimited PTO, and respect for your time outside of work.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Growth Opportunities</h3>
+                    <p>Clear career paths and mentorship to help you advance your professional journey.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Inclusive Community</h3>
+                    <p>A diverse and supportive workplace where everyone's voice is valued.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Life at TechRediva</h2>
+                <p>Hear from our team members about their experiences</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <p>"Joining TechRediva was the best career decision I've made. I get to work on challenging AI
+                        projects while having the flexibility to maintain a healthy work-life balance. The collaborative
+                        culture here encourages innovation and personal growth."</p>
+                    <div class="testimonial-author">Alex Chen</div>
+                    <div class="testimonial-role">Senior AI Engineer, 2 years at TechRediva</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="apply">
+        <div class="container">
+            <h2>Ready to Join Our Team?</h2>
+            <p>We're always looking for talented individuals who are passionate about technology and innovation. If you
+                don't see a position that matches your skills, feel free to send us your resume for future
+                opportunities.</p>
+            <a href="mailto:careers@techrediva.com" class="btn">Apply Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechRediva</h3>
+                    <p>Revitalizing digital solutions with innovative technology and passionate people.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#jobs">Open Positions</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#apply">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> careers@techrediva.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechRediva. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

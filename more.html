@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Education</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-bg: #0a1526;
+            --secondary-bg: #101218;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #3a95ff;
+            --accent-gold: #ffc857;
+            --accent-red: #ffc857;
+            --card-bg: rgba(30, 35, 45, 0.7);
+            --glow-blue: rgba(58, 149, 255, 0.5);
+            --glow-gold: rgba(255, 200, 87, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(58, 149, 255, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(255, 200, 87, 0.05) 0%, transparent 30%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .education-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--accent-red);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .education-bio {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideInFromLeft 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-bio::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: rotate 15s linear infinite;
+            z-index: -1;
+        }
+
+        .education-bio pre {
+            font-family: 'Poppins', sans-serif;
+            white-space: pre-wrap;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .education-bio b {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .education-bio i {
+            color: var(--accent-blue);
+            font-style: italic;
+        }
+
+        .education-timeline {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent-red);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px var(--glow-blue);
+        }
+
+        .timeline-item {
+            padding: 1rem;
+            position: relative;
+            width: 50%;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: slideInFromRight 0.8s ease-out forwards;
+            animation-delay: calc(0.3s * var(--i));
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            top: 20px;
+            box-shadow: 0 0 10px var(--glow-gold);
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-date {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-school {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--accent-gold);
+        }
+
+        .timeline-degree {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .interest {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-red));
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1.2s;
+        }
+
+        .section-divider {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1.4s;
+        }
+
+        .section-divider span {
+            width: 50px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .section-divider span:nth-child(1) {
+            background-color: var(--accent-gold);
+        }
+
+        .section-divider span:nth-child(2) {
+            background-color: var(--accent-gold);
+        }
+
+        .section-divider span:nth-child(3) {
+            background-color: var(--accent-red);
+        }
+
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: slideInFromBottom 0.8s ease-out forwards;
+            animation-delay: calc(0.3s * var(--i) + 1.2s);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-icon-wrapper {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(58, 149, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            z-index: 2;
+            position: relative;
+        }
+
+        .glow-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            filter: blur(15px);
+            opacity: 0.3;
+            z-index: 1;
+            animation: pulse 3s infinite alternate;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tags span {
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(58, 149, 255, 0.1);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+        }
+
+        .feature-arrow {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 200, 87, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-arrow {
+            transform: translateX(5px);
+        }
+
+        .btn {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-red));
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(58, 149, 255, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 2s;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-red), var(--accent-gold), var(--accent-blue));
+            border-radius: 40px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateX(-50%) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(58, 149, 255, 0.6);
+            letter-spacing: 2px;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+            animation: glowing 1.5s linear infinite;
+        }
+
+        @keyframes glowing {
+            0% {
+                filter: blur(5px);
+                opacity: 0.5;
+            }
+            50% {
+                filter: blur(10px);
+                opacity: 0.8;
+            }
+            100% {
+                filter: blur(5px);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .education-timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px !important;
+                padding-right: 25px !important;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 22px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .education-container,
+            .interest {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .section-badge {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="education-container">
+        <h1 class="page-title">MY EDUCATION</h1>
+        <div class="education-bio">
+            <pre>My Education goes as follows:
+°I completed my <b>Matriculate and Intermediate from
+<i>"NARAYANA e-techno School"</i></b>
+
+°Currently pursuing my <b>B.Tech Degree from
+<i>"Institute of Technical Education and Research"</i></b></pre>
+        </div>
+        <div class="education-timeline clearfix">
+            <div class="timeline-item" style="--i:1">
+                <div class="timeline-date">2016 - 2018</div>
+                <div class="timeline-school">Rotary School</div>
+                <div class="timeline-degree">Senior Secondary Education</div>
+                <div class="timeline-description">
+                    Started my secondary education from here and culminated at 7th grade.
+                    Participated in various extracurricular activities and competitions.
+                </div>
+            </div>
+            <div class="timeline-item" style="--i:2">
+                <div class="timeline-date">2018 - 2024</div>
+                <div class="timeline-school">NARAYANA e-techno School</div>
+                <div class="timeline-degree">Senior Secondary Education</div>
+                <div class="timeline-description">
+                    Completed 12th grade with distinction, focusing on science and mathematics.
+                    Focused on various academic and management activities.
+                </div>
+            </div>
+            <div class="timeline-item" style="--i:3">
+                <div class="timeline-date">2024 - Present</div>
+                <div class="timeline-school">Institute of Technical Education and Research (SOA)</div>
+                <div class="timeline-degree">Bachelor of Technology</div>
+                <div class="timeline-description">Currently pursuing B.Tech with focus on computer science and
+                    web development. Developing skills in various programming languages and design tools.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="interest">
+        <section class="feature-section" id="features">
+            <div class="section-header">
+                <span class="section-badge">My Interests</span>
+                <div class="section-divider">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="feature-container">
+                <!-- Development Box -->
+                <div class="feature-card" style="--i: 0;">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <div class="glow-effect"></div>
+                    </div>
+                    <h3 class="feature-title">Development</h3>
+                    <p class="feature-description">Building responsive, performant web applications using modern
+                        technologies and best practices.</p>
+                    <div class="feature-footer">
+                        <div class="skill-tags">
+                            <span>HTML/CSS</span>
+                            <span>CSS</span>
+                        </div>
+                        <div class="feature-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Art Box -->
+                <div class="feature-card" style="--i: 1;">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m14.622 17.897-10.68-2.913"></path>
+                                <path
+                                    d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z">
+                                </path>
+                                <path
+                                    d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="glow-effect"></div>
+                    </div>
+                    <h3 class="feature-title">Physical Activities</h3>
+                    <p class="feature-description">Promoting strength, coordination, and confidence through
+                        dynamic movement and purposeful physical engagement that energizes both body and mind.</p>
+                    <div class="feature-footer">
+                        <div class="skill-tags">
+                            <span>NCC</span>
+                            <span>Badminton</span>
+                        </div>
+                        <div class="feature-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Algorithm Box -->
+                <div class="feature-card" style="--i: 2;">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <line x1="9" y1="9" x2="10" y2="9"></line>
+                                <line x1="9" y1="13" x2="15" y2="13"></line>
+                                <line x1="9" y1="17" x2="15" y2="17"></line>
+                            </svg>
+                        </div>
+                        <div class="glow-effect"></div>
+                    </div>
+                    <h3 class="feature-title">Algorithms</h3>
+                    <p class="feature-description">Deep diving into the world of Data Structures, algorithms
+                        &amp; Coding to solve real-world problems.</p>
+                    <div class="feature-footer">
+                        <div class="skill-tags">
+                            <span>Java</span>
+                            <span>SQL</span>
+                            <span>Python</span>
+                        </div>
+                        <div class="feature-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movies -->
+                <div class="feature-card" style="--i: 3;">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                                <line x1="8" x2="16" y1="21" y2="21"></line>
+                                <line x1="12" x2="12" y1="17" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="glow-effect"></div>
+                    </div>
+                    <h3 class="feature-title">Digital Entertainment</h3>
+                    <p class="feature-description">Creating digital escapes through carefully selected stories,
+                        films, and series that offer both entertainment and meaningful moments.</p>
+                    <div class="feature-footer">
+                        <div class="skill-tags">
+                            <span>Story Book</span>
+                            <span>Movies</span>
+                            <span>Drawing</span>
+                            <span>Series</span>
+                        </div>
+                        <div class="feature-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <a onclick="window.location.href='/index.html'" class="btn">Back</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Add animation classes when elements are in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all elements with animation classes
+            document.querySelectorAll('.feature-card, .timeline-item, .education-bio, .section-badge, .section-divider').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animation for page load
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 2500);
+        });
+    </script>
+</body>
+
+</html>
